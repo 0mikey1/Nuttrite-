@@ -4,26 +4,50 @@ import "../styles/landing.css";
 
 function Landing() {
   return (
-    <div className="landingPage">
-      <div className="headers">
-        <img src="https://cdn-icons-png.flaticon.com/512/3274/3274038.png" />
-        <h1>Nuttrite</h1>
-        <h2>Where Intelligence Meets Nutrition. </h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </div>
-      <div className="btn">
-        <Link to="/register">
-          <button className="getStartedbtn">Learn More!</button>
-        </Link>
+    <div className="container-sm d-flex justify-content-center ">
+      <div className="row d-flex align-items-center">
+        <div className="col-7 ">
+          <h1 className="text-white">
+            Where Intelligence <br></br> Meets Nutrition.{" "}
+          </h1>
+          <p className="text-white">
+            Calculate the nutrition your body needs, track your meals,<br></br>{" "}
+            explore healthy recipesmd design your own meal plans.
+          </p>
+
+          <Link to="/register">
+            <button className=" btn btn-primary" role="button ">
+              Get Started
+            </button>
+          </Link>
+        </div>
+
+        <div className="col-sm">
+          <img
+            className="img-fluid"
+            src="https://cdn-icons.flaticon.com/png/512/3967/premium/3967391.png?token=exp=1661214635~hmac=bce4955bf4b2a24fe1da168813db7046"
+          />
+        </div>
       </div>
     </div>
+
+    // <div className=" landingPage">
+    //   <div className="headers">
+    //     <h1>
+    //       Where Intelligence <br></br> Meets Nutrition.{" "}
+    //     </h1>
+    //     <p>
+    //       Calculate the nutrition your body needs, track your meals, explore
+    //       healthy recipes, and design your own meal plans.
+    //     </p>
+    //     <div className="btn">
+    //       <Link to="/register">
+    //         <button className="getStartedbtn ">Get Started</button>
+    //       </Link>
+    //     </div>
+    //   </div>
+    //   <img src="https://cdn-icons.flaticon.com/png/512/3967/premium/3967391.png?token=exp=1661214635~hmac=bce4955bf4b2a24fe1da168813db7046" />
+    // </div>
   );
 }
 

@@ -8,10 +8,11 @@ const Navbar = () => {
       <nav className="item">
         <ul className="ul">
           <li className="li">
-            <Link to="/login">Login</Link>
-          </li>
-          <li className="li">
-            <Link to="/register">Register</Link>
+            <Link to="/login">
+              <button className=" btn btn-primary" role="button ">
+                Login
+              </button>
+            </Link>
           </li>
         </ul>
       </nav>
