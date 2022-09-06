@@ -3,7 +3,7 @@ import "../styles/features.css";
 
 const Features = () => {
   return (
-    <div className="container">
+    <div className="container" style={{ paddingTop: 150 }}>
       <div className="row">
         <div className="col text-center">
           <h1 className="text-white fs-1 text">What we offer..</h1>
