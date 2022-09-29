@@ -48,9 +48,18 @@ const Survey = () => {
             calculate your optimal daily nutrition and the optimal
             macro-nutritional content of each of your meals.
           </p>
+
+          <img
+            width="600"
+            height="600"
+            className="rounded mx-auto d-block"
+            src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiMwZDZlZmQiPjxwYXRoIGQ9Ik0xNTAuOTc1NjksNDUuMjM2Yy0xLjQ3MDA2LC0xMi43MTQ1NiAtMTEuNDk3MTIsLTIyLjc0MTYzIC0yNC4yMTE2OSwtMjQuMjExNjljLTEwLjE5MzY5LC0xLjE3OTgxIC0yMy45Mjk1LC0yLjIxMTgxIC00MC43NjQsLTIuMjExODFjLTE2LjgzNDUsMCAtMzAuNTcwMzEsMS4wMzIgLTQwLjc2NCwyLjIxMTgxYy0xMi43MTQ1NiwxLjQ3MDA2IC0yMi43NDE2MywxMS40OTcxMiAtMjQuMjExNjksMjQuMjExNjljLTEuMTc5ODEsMTAuMTkzNjkgLTIuMjExODEsMjMuOTI5NSAtMi4yMTE4MSw0MC43NjRjMCwxNi44MzQ1IDEuMDMyLDMwLjU3MDMxIDIuMjExODEsNDAuNzY0YzEuNDcwMDYsMTIuNzE0NTYgMTEuNDk3MTIsMjIuNzQxNjIgMjQuMjExNjksMjQuMjExNjljMTAuMTkzNjksMS4xNzk4MSAyMy45Mjk1LDIuMjExODEgNDAuNzY0LDIuMjExODFjMTYuODM0NSwwIDMwLjU3MDMxLC0xLjAzMiA0MC43NjQsLTIuMjExODFjMTIuNzE0NTYsLTEuNDcwMDYgMjIuNzQxNjIsLTExLjQ5NzEyIDI0LjIxMTY5LC0yNC4yMTE2OWMxLjE3OTgxLC0xMC4xOTM2OSAyLjIxMTgxLC0yMy45Mjk1IDIuMjExODEsLTQwLjc2NGMwLC0xNi44MzQ1IC0xLjAzMiwtMzAuNTcwMzEgLTIuMjExODEsLTQwLjc2NHpNNjkuNjYsMTI0Ljc4MDYzbC0xMi4wMTMxMywxMi4wNGMwLDAgLTcuMDQxMjUsLTEyLjcxMTg3IC04LjE5Njg4LC0zMC41MDMxMmMzLjc2MjUsMi4yODQzOCA5LjI5ODc1LDUuMzIxMjUgMTUuODAyNSw4LjAwODc1YzIuMTc2ODcsNi41NTc1IDQuNDA3NSwxMC40NTQzOCA0LjQwNzUsMTAuNDU0Mzh6TTg0Ljg0NzA2LDEwOS43OTI0NGMtMjAuMzM5LDAgLTM1LjY4NDYzLC04LjU2Nzc1IC0zNS42ODQ2MywtOC41Njc3NWwxMi4wMjkyNSwtMTIuMDI5MjVjMCwwIDkuMDM1MzgsNS4xNzM0NCAyMi40ODM2Miw3LjU1MTg4Yy0xLjE5NTk0LC02Ljc2MTc1IC0zLjEwMTM3LC0xMi40MDAxMyAtNC42ODk2OSwtMTYuMzM3MzFjNC4yMTkzNywyLjIzMDYyIDEwLjAyNDM3LDQuOTQ1IDE3LjAzODc1LDcuMjgzMTJjMC40MywzLjIyNSAwLjY5ODc1LDYuNjY1IDAuNjk4NzUsMTAuMjM5Mzh6TTEyMy44MjkyNSw3MC44MTAyNWwtMTEuODY1MzEsMTEuODY1MzFjLTIwLjMzOSwwIC0zNS42ODQ2MiwtOC41Njc3NSAtMzUuNjg0NjIsLTguNTY3NzVsMTIuMDI5MjUsLTEyLjAyOTI1YzAsMCA5LjAzMjY5LDUuMTczNDQgMjIuNDcyODgsNy41NTE4N2MtMi4zNzg0NCwtMTMuNDQwMTkgLTcuNTUxODgsLTIyLjQ3Mjg4IC03LjU1MTg4LC0yMi40NzI4OGwxMi4wMjkyNSwtMTIuMDI5MjVjMC4wMDI2OSwtMC4wMDI2OSA4LjU3MDQ0LDE1LjM0Mjk0IDguNTcwNDQsMzUuNjgxOTR6Ij48L3BhdGg+PC9nPjwvZz48L3N2Zz4="
+          />
+        </div>
+        <div className="col-4">
           <form onSubmit={formik.handleSubmit}>
             <div className="row">
-              <label className="text-white fs-6 text text-center">
+              <label className="text-white fs-6 text text-center pt-4 ">
                 Select your sex
                 <select
                   id="userSex"
@@ -140,7 +149,6 @@ const Survey = () => {
                     <option value="9in">9 in</option>
                     <option value="10in">10 in</option>
                     <option value="11in">11 in</option>
-                    <option value="12in">12 in</option>
                   </select>
                   {formik.touched.userHeightRemainderInches &&
                   formik.errors.userHeightRemainderInches ? (
