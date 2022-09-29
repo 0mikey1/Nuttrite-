@@ -9,9 +9,9 @@ import { HashLink } from "react-router-hash-link";
 function Landing() {
   return (
     <div>
-      <div className="container-sm d-flex justify-content-center ">
+      <div className="container ">
         <div className="row d-flex align-items-center">
-          <div className="col-7 ">
+          <div className="col-sm-9 col-md-8 col-lg-7 col-xl-6 ">
             <h1 className="text-white">
               Where Intelligence <br></br> Meets Nutrition.{" "}
             </h1>
@@ -19,15 +19,16 @@ function Landing() {
               Calculate the nutrition your body needs, track your meals,
               <br></br> explore healthy recipes and design your own meal plans.
             </p>
-
-            <HashLink to="/#survey">
-              <button className=" btn btn-primary" role="button ">
-                Get Started
-              </button>
-            </HashLink>
+            <div className="col text-center">
+              <HashLink to="/#survey">
+                <button className=" btn btn-primary" role="button ">
+                  Get Started
+                </button>
+              </HashLink>
+            </div>
           </div>
 
-          <div className="col-sm">
+          <div className="col-xs-2 col-sm-3 col-md-4 col-lg-5 col-xl-6">
             <img
               className="img-fluid"
               src="https://cdn-icons-png.flaticon.com/512/3246/3246628.png"
