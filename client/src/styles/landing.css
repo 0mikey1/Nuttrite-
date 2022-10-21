@@ -1,9 +1,52 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Lora:ital,wght@1,400;1,500;1,600&family=Montserrat:wght@700&family=Poppins:wght@100&family=Raleway:wght@100&family=Titillium+Web:wght@900&family=Varela&display=swap");
-.container-fluid {
-  padding-top: 100px;
-  background-color: black;
-}
+
 h1 {
   font-size: 80px;
   padding-top: 50px;
+}
+
+@media (min-width: 320px) {
+  .img-fluid {
+    display: none;
+  }
+  h1,
+  p,
+  button {
+    text-align: center;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .img-fluid {
+    display: block;
+  }
+}
+
+/*  Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .img-fluid {
+    display: block;
+  }
+}
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .img-fluid {
+    display: block;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .img-fluid {
+    display: block;
+  }
+}
+
+/*  XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .img-fluid {
+    display: block;
+  }
 }

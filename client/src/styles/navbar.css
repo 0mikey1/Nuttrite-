@@ -6,6 +6,7 @@
 .ul {
   display: flex;
   margin: 35px;
+  list-style-type: none;
 }
 
 a {

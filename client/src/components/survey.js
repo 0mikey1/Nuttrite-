@@ -38,7 +38,8 @@ const Survey = () => {
   return (
     <div className="container ">
       <div className="row">
-        <div className="col-7  ">
+        <div className="col"></div>
+        <div className="col-xs-8 col-sm-8 col-md-6 col-lg-4 ">
           <h1 className="text-white fs-1 text text-center"> Get Started </h1>
           <p className="text-white fs-6 text text-center">
             {" "}
@@ -249,7 +250,7 @@ const Survey = () => {
             </div>
           </form>
         </div>
-        <div className="col-1"></div>
+        <div className="col"></div>
       </div>
     </div>
   );
