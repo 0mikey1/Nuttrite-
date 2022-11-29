@@ -23,12 +23,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 mongoose
-  .connect(
-    "mongodb+srv://0mikey1:OxxfINhfPtCZE6Mq@nuttriteclutster.g1yhjsm.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGO_URL, {
+    useUnifiedTopology: true,
+  })
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
