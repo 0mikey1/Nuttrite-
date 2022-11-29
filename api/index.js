@@ -8,9 +8,13 @@ const session = require("express-session");
 const cors = require("cors");
 const contactUsInquiryRoute = require("./routes/contactUsInquiry");
 const userSurveyRoute = require("./routes/userSurveyData");
+const userRegisterRoute = require("./routes/auth");
+const User = require("./models/user");
+const LocalStrategy = require("passport-local").Strategy;
 
 require("./models/user");
 require("./services/passport");
+require("./routes/auth");
 
 dotenv.config();
 
@@ -39,15 +43,17 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
 
-require("./routes/auth")(app);
 app.get("/", function (req, res) {
   res.send(req.user);
 });
 
 app.use("/api/contactUsInquiry", contactUsInquiryRoute);
 app.use("/api/userSurveyData", userSurveyRoute);
-
+app.use("/api/newUser", userRegisterRoute);
 const PORT = 8000;
 
 app.listen(PORT);

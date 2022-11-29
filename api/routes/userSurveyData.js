@@ -4,8 +4,6 @@ const UserSurveyData = require("../models/userSurveyData");
 
 router.post("/send", async (req, res) => {
   try {
-    console.log("poop");
-
     const userSurveyDataObj = new UserSurveyData(req.body);
 
     const userSurveyDataObject = await userSurveyDataObj.save();

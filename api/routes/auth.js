@@ -1,31 +1,37 @@
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = require("../models/user");
+const router = require("express").Router();
 
-module.exports = app => {
-  app.post("/register", function (req, res) {
-    User.register(new User({ username: req.body.username, email: req.body.email }), req.body.password, function (err, account) {
-
+router.post("/register", function (req, res) {
+  User.register(
+    new User({ email: req.body.email, username: req.body.username }),
+    req.body.password,
+    function (err, account) {
       if (err) {
         return res.send(err);
       }
 
       return res.send(account);
-    });
-  });
+    }
+  );
+});
 
-  app.post("/login", passport.authenticate("local"), function(req, res) {
-    res.send(req.user);
-  });
+router.post("/login", passport.authenticate("local"), function (req, res) {
+  res.send(req.user);
+});
 
-  app.post("/logout", (req, res, next) => {
-    req.logout(function(err) {
-      if (err) { return next(err); }
-      res.redirect("/");
-    });
+router.post("/logout", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
   });
+});
 
-  app.get("/current_user", (req, res) => {
-    res.send(req.user);
-  });
-}
+router.get("/current_user", (req, res) => {
+  res.send(req.user);
+});
+
+module.exports = router;
