@@ -1,34 +1,53 @@
 const express = require("express");
+const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+app.use(express.json());
 const passport = require("passport");
 const session = require("express-session");
+const cors = require("cors");
+const contactUsInquiryRoute = require("./routes/contactUsInquiry");
+const userSurveyRoute = require("./routes/userSurveyData");
+
 require("./models/user");
 require("./services/passport");
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, {
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
+mongoose
+  .connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
-  }).catch((err) => console.log(err));
+  })
+  .then(console.log("Connected to MongoDB"))
+  .catch((err) => console.log(err));
 
-const app = express();
-
-app.use(express.json());
-app.use(session({
-  secret: 'nuttrite',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}));
+app.use(
+  session({
+    secret: "nuttrite",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/auth")(app);
-
-app.get('/', function (req, res) {
+app.get("/", function (req, res) {
   res.send(req.user);
 });
 
-const PORT = process.env.PORT || 8000;
+app.use("/api/contactUsInquiry", contactUsInquiryRoute);
+app.use("/api/userSurveyData", userSurveyRoute);
+
+const PORT = 8000;
+
 app.listen(PORT);

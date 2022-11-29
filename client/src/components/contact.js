@@ -1,6 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const formik = useFormik({
@@ -17,17 +19,40 @@ const Contact = () => {
         .max(250, "Message must not exceed 250 characters."),
     }),
 
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const res = await axios.post(
+          "http://localhost:8000/api/contactUsInquiry/send",
+          {
+            name: values.contactUserName,
+            email: values.contactUserEmail,
+            message: values.contactUserMessage,
+          }
+        );
+        console.log(values);
+        emailjs.send(
+          "service_j3w2wc4",
+          "template_0jnpbhs",
+          {
+            name: values.contactUserName,
+            email: values.contactUserEmail,
+            message: values.contactUserMessage,
+          },
+          "BHar56MMgZRPH8-xl"
+        );
+        alert("Message Sent.");
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
 
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          <h1 className="text-white fs-1 text text-center">Contact Us</h1>
-          <p className="text-white fs-6 text text-center">
+    <div className="container">
+      <div className="row">
+        <div className="col text-center">
+          <h1 className="text-black fs-1 text text-center">Contact Us</h1>
+          <p className="text-black fs-6 text text-center">
             {" "}
             Let's get in touch.{" "}
           </p>
@@ -37,7 +62,7 @@ const Contact = () => {
             <div className="col">
               <form onSubmit={formik.handleSubmit}>
                 <div className="row">
-                  <label className="text-white fs-6 text text-center pt-4 ">
+                  <label className="text-black fs-6 text text-center pt-4 ">
                     Name
                     <input
                       id="contactUserName"
@@ -58,7 +83,7 @@ const Contact = () => {
                   </label>
                 </div>
                 <div className="row">
-                  <label className="text-white fs-6 text text-center pt-4 ">
+                  <label className="text-black fs-6 text text-center pt-4 ">
                     Email
                     <input
                       placeholder="e.g danielperez@gmail.com"
@@ -80,7 +105,7 @@ const Contact = () => {
                   </label>
                 </div>
                 <div className="row">
-                  <label className="text-white fs-6 text text-center pt-4 ">
+                  <label className="text-black fs-6 text text-center pt-4 ">
                     Message
                     <textarea
                       id="contactUserMessage"
