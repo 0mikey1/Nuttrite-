@@ -1,11 +1,40 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useRef } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import "../styles/register.css";
 
 const Register = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      username: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().required("This field is required."),
+      username: Yup.string().required("This field is required."),
+
+      password: Yup.string().required("This field is required."),
+    }),
+    onSubmit: async (values) => {
+      try {
+        const res = await axios.post(
+          "http://localhost:8000/api/newUser/register",
+          {
+            email: values.email,
+            username: values.username,
+            password: values.password,
+          }
+        );
+        console.log(res);
+        console.log("Post request made.");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
+
   return (
     <div className="register">
       <div className="container">
@@ -13,34 +42,61 @@ const Register = () => {
           <div className="row">
             <div className="col-5"></div>
             <div className="col">
-              <form className="loginForm">
+              <form className="loginForm" onSubmit={formik.handleSubmit}>
                 <div className="form-group">
-                  <label for="exampleInputEmail1"> Email Address</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter email"
-                  ></input>
+                  <label htmlFor="userEmail">
+                    {" "}
+                    Email Address
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter email"
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                    {formik.touched.email && formik.errors.email ? (
+                      <p className="text-black"> {formik.errors.email}</p>
+                    ) : null}
+                  </label>
                 </div>
                 <div className="form-group">
-                  <label for="exampleUsername1"> Username</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter username"
-                  ></input>
+                  <label htmlFor="username">
+                    {" "}
+                    Username
+                    <input
+                      type="text"
+                      id="username"
+                      className="form-control"
+                      placeholder="Enter username"
+                      value={formik.values.username}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                    {formik.touched.username && formik.errors.username ? (
+                      <p className="text-black"> {formik.errors.username}</p>
+                    ) : null}
+                  </label>
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Enter password"
-                  ></input>
+                  <label htmlFor="exampleInputPassword1">
+                    Password
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="password"
+                      placeholder="Enter password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                    {formik.touched.password && formik.errors.password ? (
+                      <p className="text-black"> {formik.errors.password}</p>
+                    ) : null}
+                  </label>
                 </div>
                 <div className="button" align="center">
                   <button type="submit" className="btn btn-primary mt-2">
