@@ -1,34 +1,56 @@
 const express = require("express");
+const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+app.use(express.json());
 const passport = require("passport");
 const session = require("express-session");
+const cors = require("cors");
+const contactUsInquiryRoute = require("./routes/contactUsInquiry");
+const userSurveyRoute = require("./routes/userSurveyData");
+
 require("./models/user");
 require("./services/passport");
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, {
-    useUnifiedTopology: true,
-  }).catch((err) => console.log(err));
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
-const app = express();
+app.use(cors(corsOptions));
 
-app.use(express.json());
-app.use(session({
-  secret: 'nuttrite',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}));
+mongoose
+  .connect(
+    "mongodb+srv://0mikey1:OxxfINhfPtCZE6Mq@nuttriteclutster.g1yhjsm.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useUnifiedTopology: true,
+    }
+  )
+  .then(console.log("Connected to MongoDB"))
+  .catch((err) => console.log(err));
+
+app.use(
+  session({
+    secret: "nuttrite",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/auth")(app);
-
-app.get('/', function (req, res) {
+app.get("/", function (req, res) {
   res.send(req.user);
 });
 
-const PORT = process.env.PORT || 8000;
+app.use("/api/contactUsInquiry", contactUsInquiryRoute);
+app.use("/api/userSurveyData", userSurveyRoute);
+
+const PORT = 8000;
+
 app.listen(PORT);

@@ -5,6 +5,9 @@ h1 {
   padding-top: 50px;
 }
 
+.img-fluid {
+}
+
 @media (min-width: 320px) {
   .img-fluid {
     display: none;
@@ -16,6 +19,10 @@ h1 {
   }
 }
 
+.btn-primary {
+  background-color: #28b297;
+  border-color: #28b297;
+}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .img-fluid {

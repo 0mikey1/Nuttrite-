@@ -1,0 +1,13 @@
+.login {
+  height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("https://cdn.pixabay.com/photo/2016/02/05/15/34/pasta-1181189_1280.jpg");
+  background-size: 1500px 800px;
+}
+
+.container {
+  padding-bottom: 120px;
+}

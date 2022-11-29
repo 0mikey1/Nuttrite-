@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const Survey = () => {
   const formik = useFormik({
@@ -30,8 +30,24 @@ const Survey = () => {
       userActivityLevel: Yup.string().required("This field is required."),
       userFitnessGoal: Yup.string().required("This field is required."),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const res = await axios.post(
+          "http://localhost:8000/api/userSurveyData/send",
+          {
+            sex: values.userSex,
+            age: values.userAge,
+            heightInFeet: values.userHeightFeet,
+            heightRemainderInches: values.heightRemainderInches,
+            weight: values.userWeight,
+            activityLevel: values.userActivityLevelactivityLevel,
+            fitnessGoal: values.userFitnessGoal,
+          }
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
     },
   });
 
@@ -40,8 +56,8 @@ const Survey = () => {
       <div className="row">
         <div className="col"></div>
         <div className="col-xs-8 col-sm-8 col-md-6 col-lg-4 ">
-          <h1 className="text-white fs-1 text text-center"> Get Started </h1>
-          <p className="text-white fs-6 text text-center">
+          <h1 className="text-black fs-1 text text-center"> Get Started </h1>
+          <p className="text-black fs-6 text text-center">
             {" "}
             In order for us to generate your nutrition profile, we need to know
             more about you. Based on the information you provide us, we
@@ -50,7 +66,7 @@ const Survey = () => {
           </p>
           <form onSubmit={formik.handleSubmit}>
             <div className="row">
-              <label className="text-white fs-6 text text-center">
+              <label className="text- fs-6 text text-center">
                 Select your sex
                 <select
                   id="userSex"
@@ -71,7 +87,7 @@ const Survey = () => {
             </div>
 
             <div className="row">
-              <label className="text-white fs-6 text text-center">
+              <label className="black- fs-6 text text-center">
                 Input your age
                 <input
                   id="userAge"
@@ -91,7 +107,7 @@ const Survey = () => {
 
             <div className="row">
               <div className="col-6" align="center">
-                <label className="text-white fs-6 text text-center">
+                <label className="text-black fs-6 text text-center">
                   Height in Feet
                   <select
                     id="userHeightFeet"
@@ -118,7 +134,7 @@ const Survey = () => {
                 </label>
               </div>
               <div className="col-6" align="center">
-                <label className="text-white fs-6 text text-center">
+                <label className="text-black fs-6 text text-center">
                   Height in Inches
                   <select
                     id="userHeightRemainderInches"
@@ -153,7 +169,7 @@ const Survey = () => {
               </div>
             </div>
             <div className="row">
-              <label className="text-white fs-6 text text-center">
+              <label className="text-black fs-6 text text-center">
                 Input your weight
                 <input
                   id="userWeight"
@@ -171,7 +187,7 @@ const Survey = () => {
             </div>
 
             <div className="row">
-              <label className="text-white fs-6 text text-center">
+              <label className="text- fs-6 text text-center">
                 Select your activity level
                 <select
                   id="userActivityLevel"
@@ -211,7 +227,7 @@ const Survey = () => {
             </div>
 
             <div className="row">
-              <label className="text-white fs-6 text text-center">
+              <label className="text- fs-6 text text-center">
                 Select your fitness goal
                 <select
                   id="userFitnessGoal"

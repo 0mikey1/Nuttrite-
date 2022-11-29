@@ -9,9 +9,10 @@ const Navbar = () => {
         <ul className="ul">
           <li className="li">
             <Link to="/login">
-              <button className=" btn btn-primary" role="button ">
-                Login
-              </button>
+              <button className="btn btn-primary mx-2">Login</button>
+            </Link>
+            <Link to="/register">
+              <button className="btn btn-primary">Register</button>
             </Link>
           </li>
         </ul>
