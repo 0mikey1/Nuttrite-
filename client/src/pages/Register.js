@@ -44,7 +44,10 @@ const Register = () => {
             <div className="col">
               <form className="loginForm" onSubmit={formik.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="userEmail">
+                  <label
+                    className="text-white fw-bold fs-6 text text-center"
+                    htmlFor="userEmail"
+                  >
                     {" "}
                     Email Address
                     <input
@@ -58,12 +61,15 @@ const Register = () => {
                       onBlur={formik.handleBlur}
                     />
                     {formik.touched.email && formik.errors.email ? (
-                      <p className="text-black"> {formik.errors.email}</p>
+                      <p className="text-white"> {formik.errors.email}</p>
                     ) : null}
                   </label>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="username">
+                  <label
+                    className="text-white fw-bold fs-6 text text-center"
+                    htmlFor="username"
+                  >
                     {" "}
                     Username
                     <input
@@ -76,13 +82,16 @@ const Register = () => {
                       onBlur={formik.handleBlur}
                     />
                     {formik.touched.username && formik.errors.username ? (
-                      <p className="text-black"> {formik.errors.username}</p>
+                      <p className="text-white"> {formik.errors.username}</p>
                     ) : null}
                   </label>
                 </div>
 
                 <div class="form-group">
-                  <label htmlFor="exampleInputPassword1">
+                  <label
+                    className="text-white fw-bold fs-6 text text-center"
+                    htmlFor="exampleInputPassword1"
+                  >
                     Password
                     <input
                       type="password"
@@ -94,7 +103,7 @@ const Register = () => {
                       onBlur={formik.handleBlur}
                     />
                     {formik.touched.password && formik.errors.password ? (
-                      <p className="text-black"> {formik.errors.password}</p>
+                      <p className="text-white"> {formik.errors.password}</p>
                     ) : null}
                   </label>
                 </div>

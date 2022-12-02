@@ -1,14 +1,20 @@
-.item {
-  display: flex;
-  float: right;
-}
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Lora:ital,wght@1,400;1,500;1,600&family=Montserrat:wght@700&family=Poppins:wght@100&family=Raleway:wght@100&family=Titillium+Web:wght@900&family=Varela&display=swap");
 
-.ul {
-  display: flex;
-  margin: 35px;
-  list-style-type: none;
-}
-
-a {
+nav {
+  background-color: #373898;
+  font-family: "sans-serif";
+  font-size: 1.2em;
+  font-weight: bold;
   color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+nav a {
+  color: white;
+  font-weight: bold;
+  padding: 0.5em;
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:active {
+  color: rgba(255, 255, 255, 0.6);
 }
