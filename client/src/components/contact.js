@@ -48,13 +48,16 @@ const Contact = () => {
   });
 
   return (
-    <div className="container">
+    <div className="container" id="contact">
       <div className="row">
         <div className="col text-center">
-          <h1 className="text-black fs-1 text text-center">Contact Us</h1>
-          <p className="text-black fs-6 text text-center">
-            {" "}
-            Let's get in touch.{" "}
+          <h1 className="text-white fs-1 text text-center">Contact Us</h1>
+          <p className="text-white fs-6 text text-center">
+            Do you have a question for the Nuttrite team? We're here to help!
+            Simply fill out the form below and one of our dedicated staff
+            members will get back to you as soon as possible. Whether you're
+            looking for advice on a specific recipe, have a suggestion for our
+            app, or just want to say hi, we'd love to hear from you
           </p>
 
           <div className="row">
@@ -62,11 +65,11 @@ const Contact = () => {
             <div className="col">
               <form onSubmit={formik.handleSubmit}>
                 <div className="row">
-                  <label className="text-black fs-6 text text-center pt-4 ">
+                  <label className="text-white fw-bold fs-6 text text-center">
                     Name
                     <input
                       id="contactUserName"
-                      placeholder="e.g Daniel Perez"
+                      placeholder="e.g John Smith"
                       name="contactUserName"
                       className="form-control"
                       value={formik.values.contactUserName}
@@ -83,10 +86,10 @@ const Contact = () => {
                   </label>
                 </div>
                 <div className="row">
-                  <label className="text-black fs-6 text text-center pt-4 ">
+                  <label className="text-white fw-bold fs-6 text text-center">
                     Email
                     <input
-                      placeholder="e.g danielperez@gmail.com"
+                      placeholder="e.g JohnSmith@gmail.com"
                       id="contactUserEmail"
                       name="contactUserEmail"
                       className="form-control"
@@ -105,7 +108,7 @@ const Contact = () => {
                   </label>
                 </div>
                 <div className="row">
-                  <label className="text-black fs-6 text text-center pt-4 ">
+                  <label className="text-white fw-bold fs-6 text text-center ">
                     Message
                     <textarea
                       id="contactUserMessage"

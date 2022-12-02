@@ -3,6 +3,11 @@
 h1 {
   font-size: 80px;
   padding-top: 50px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 .img-fluid {
@@ -20,8 +25,8 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #28b297;
-  border-color: #28b297;
+  background-color: #fee36e;
+  color: #373898;
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {

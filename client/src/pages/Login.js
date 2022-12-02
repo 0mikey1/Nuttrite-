@@ -15,7 +15,13 @@ const Login = () => {
             <div className="col">
               <form className="loginForm">
                 <div className="form-group">
-                  <label for="exampleInputEmail1"> Email Address</label>
+                  <label
+                    className="text-white fw-bold fs-6 text text-center"
+                    for="exampleInputEmail1"
+                  >
+                    {" "}
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     className="form-control"
@@ -25,7 +31,12 @@ const Login = () => {
                   ></input>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
+                  <label
+                    className="text-white fs-6 fw-bold text-center"
+                    for="exampleInputPassword1"
+                  >
+                    Password
+                  </label>
                   <input
                     type="password"
                     class="form-control"
